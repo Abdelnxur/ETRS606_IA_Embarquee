@@ -199,6 +199,6 @@ Ces résultats serviront de base pour les TPs suivants, notamment le déploiemen
 
 ## Ressources
 
-- 📓 [Notebook Google Colab](https://colab.research.google.com/drive/1ce9z_6sCxPth3JLwyotcjjutvgJ1WGLU) *(accès restreint à l'équipe)*
+- 📓 [Notebook Google Colab](https://colab.research.google.com/drive/1ce9z_6sCxPth3JLwyotcjjutvgJ1WGLU) 
 - 📂 [Retour au dépôt principal](../README.md)
-- 📄 [Sujet TP1 officiel — ETRS606](../docs/ETRS606_TP1.pdf)
+- 📄 [Sujet TP1 officiel — ETRS606](../TP1/ETRS606_TP1.pdf)
