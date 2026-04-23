@@ -62,7 +62,7 @@ ETRS606_IA_Embarquee/
 Classification d'images de chiffres manuscrits (0–9) avec un réseau dense (MLP).  
 Comparaison de fonctions d'activation (Softmax, ReLU, Tanh, Sigmoid), d'optimiseurs (SGD, Adam, RMSprop, Adagrad) et de fonctions coût.  
 **Résultat clé :** Tanh avec Adam atteint ~97.6% de précision, `sparse_categorical_crossentropy` choisie.  
-→ [Voir TP1](./TP1/README.md)
+→ [Voir TP1](./TP1/TP1_README.md)
 
 ### TP2 — Interface Capteurs & STM32
 Programmation embarquée bas niveau sur NUCLEO-N657X0 : chenillard LED, lecture des capteurs MEMS via I²C (HAL), communication réseau avec FreeRTOS + LWIP.  
