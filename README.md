@@ -47,7 +47,7 @@ Le module explore les compromis nécessaires pour déployer des réseaux de neur
 
 ```
 ETRS606_IA_Embarquee/
-├── TP1/          # Problème MNIST — Classification de chiffres manuscrits
+├── TP1/ETRS606_TP1.pdf          # Problème MNIST — Classification de chiffres manuscrits
 ├── TP2/          # Interface Capteurs & STM32 — Drivers I²C, LEDs, Ethernet
 ├── TP3/          # Connectivité Cloud — ThingSpeak, MQTT, entraînement Meteostat
 ├── TP4/          # Cloud vs Edge AI — MATLAB/ONNX et déploiement STM32N6
