@@ -70,15 +70,15 @@ Programmation embarquée bas niveau sur NUCLEO-N657X0 : chenillard LED, lecture 
 
 ### TP3 — Connectivité Cloud
 Envoi de données capteurs vers ThingSpeak (REST/MQTT), visualisation MATLAB, entraînement d'un modèle Python/TensorFlow pour la classification météo (MeteoStat).  
-→ [Voir TP3](./TP3/README.md)
+→ [Voir TP3](./TP3/TP3_README.md)
 
 ### TP4 — Cloud vs Edge AI
 Déploiement du modèle Meteostat via ONNX sur MATLAB/ThingSpeak (Cloud) et sur la carte STM32N6 via X-CUBE-AI (Edge). Comparaison latence, précision, consommation.  
-→ [Voir TP4](./TP4/README.md)
+→ [Voir TP4](./TP4/TP4_README.md)
 
 ### TP5 — Examen de TP (Compétences)
 Démonstration finale du système embarqué et pitch oral de 3 minutes.  
-→ [Voir TP5](./TP5/README.md)
+→ [Voir TP5](./TP5/TP5_README.md)
 
 ---
 
