@@ -228,26 +228,6 @@ while(1) {
 
 ---
 
-## Discussion & Points Techniques
-
-### Défi : choix du bus I²C
-
-Lors du développement, l'identification du bon bus I²C a nécessité plusieurs tests. Le sujet indiquait PA12/PA11 pour I²C2, mais la configuration réelle de la carte a imposé d'utiliser **I²C1** pour le code final des capteurs (version `main_c_capteur.c`). La communication sur le bus Discord de l'équipe illustre cette phase de débogage :
-
-> *"L'I2C — regarder quels sont les pins en SDL et SDA. Et y'a un uart aussi mais je sais plus si on utilisait le lpuart ou le usart 4"* — puis confirmation : *"On avait pris l'UART4"*
-
-### Défi : auto-incrémentation HTS221
-
-Le HTS221 est le seul capteur du shield qui exige l'activation du bit d'auto-incrémentation (`0x80`) dans l'adresse de registre pour les lectures multi-octets. Sans ce mécanisme, la lecture des coefficients de calibration d'usine renvoie des valeurs incorrectes, rendant la conversion en degrés Celsius impossible (risque de division par zéro).
-
-### Évolution v1 → v2 du code capteurs
-
-Deux versions du code ont été développées :
-- **v1 (chenillard)** : lecture brute des capteurs (valeurs entières non converties), adressage I²C2
-- **v2 (capteur final)** : lecture avec conversion en grandeurs physiques, calibration HTS221, adressage I²C1 corrigé
-
----
-
 ## Conclusion
 
 Ce TP a permis de maîtriser la chaîne complète d'intégration d'un système embarqué connecté :
