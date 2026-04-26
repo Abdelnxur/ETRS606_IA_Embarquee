@@ -163,9 +163,9 @@ Les LEDs servent de repère visuel de l'état de la carte :
 ![Console capteurs](résultat/capteur.png)
 
 *Figure 2 — Console UART affichant deux cycles de lecture. Les valeurs sont stables et cohérentes :*
-- **HTS221 Temp : 2.28 °C** (température ambiante de la salle)
+- **HTS221 Temp : 22.28 °C** (température ambiante de la salle)
 - **LPS22HH Pression : ~996.7 hPa** (pression atmosphérique normale)
-- **LSM6DSO Accél [X, Y, Z] : ~14.5, ~2.0, ~1003.5 mg** (la composante Z ≈ 1000 mg correspond à la gravité terrestre, la carte étant posée à plat)
+- **LSM6DSO Accél [X, Y, Z] : ~14.8, ~2.3, ~1003.5 mg** (la composante Z ≈ 1000 mg correspond à la gravité terrestre, la carte étant posée à plat)
 
 ---
 
