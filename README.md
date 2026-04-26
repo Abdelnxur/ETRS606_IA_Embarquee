@@ -66,7 +66,7 @@ Comparaison de fonctions d'activation (Softmax, ReLU, Tanh, Sigmoid), d'optimise
 
 ### TP2 — Interface Capteurs & STM32
 Programmation embarquée bas niveau sur NUCLEO-N657X0 : chenillard LED, lecture des capteurs MEMS via I²C (HAL), communication réseau avec FreeRTOS + LWIP.  
-→ [Voir TP2](./TP2/README.md)
+→ [Voir TP2](./TP2/TP2_README.md)
 
 ### TP3 — Connectivité Cloud
 Envoi de données capteurs vers ThingSpeak (REST/MQTT), visualisation MATLAB, entraînement d'un modèle Python/TensorFlow pour la classification météo (MeteoStat).  
