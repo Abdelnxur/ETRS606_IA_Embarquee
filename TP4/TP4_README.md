@@ -3,7 +3,7 @@
 <div align="center">
 
 ![Module](https://img.shields.io/badge/ETRS606-TP4-0088CC?style=flat-square)
-![NPU](https://img.shields.io/badge/STM32N6-NPU_Neural--ART-03234B?style=flat-square)
+![NPU](https://img.shields.io/badge/STM32N6-X--CUBE--AI-03234B?style=flat-square)
 ![ONNX](https://img.shields.io/badge/ONNX-X--CUBE--AI-FF6F00?style=flat-square)
 ![Site](https://img.shields.io/badge/GitHub_Pages-Live_Dashboard-4CAF50?style=flat-square)
 
@@ -20,7 +20,7 @@ L3 TRI — Université Savoie Mont Blanc | ETRS606 : IA Embarquée
 
 ## Introduction
 
-Ce TP concrétise la convergence entre les acquis des TPs précédents : le modèle Meteostat entraîné en Python (TP3) est déployé **directement sur la carte STM32N6** via X-CUBE-AI, permettant une inférence locale sur le NPU Neural-ART. La carte devient ainsi une station météo intelligente autonome, capable de classifier l'état météo sans dépendre du Cloud pour le calcul.
+Ce TP concrétise la convergence entre les acquis des TPs précédents : le modèle Meteostat entraîné en Python (TP3) est déployé **directement sur la carte STM32N6** via X-CUBE-AI, permettant une inférence locale sur le CPU Cortex-M33 via X-CUBE-AI. La carte devient ainsi une station météo intelligente autonome, capable de classifier l'état météo sans dépendre du Cloud pour le calcul.
 
 En parallèle, un **site web temps réel** hébergé sur GitHub Pages agrège et visualise les données envoyées par la carte vers ThingSpeak.
 
@@ -30,7 +30,7 @@ En parallèle, un **site web temps réel** hébergé sur GitHub Pages agrège et
 
 | Composant | Détail |
 |-----------|--------|
-| **Carte** | NUCLEO-N657X0 (ARM Cortex-M33 + NPU Neural-ART 600 GOPS) |
+| **Carte** | NUCLEO-N657X0 (ARM Cortex-M33 + NPU Neural-ART 600 GOPS — inférence exécutée sur CPU) |
 | **Shield** | X-NUCLEO-IKS01A3 (HTS221, LPS22HH, LSM6DSO16IS) |
 | **Framework IA embarquée** | X-CUBE-AI (ST Edge AI Core v2.2.0) |
 | **Modèle** | `meteostat_v3.onnx` (707 paramètres, 2 828 octets) |
@@ -109,7 +109,7 @@ for(int i = 0; i < 3; i++) {
     if(in_ptr[i] > 1.0f) in_ptr[i] = 1.0f;
 }
 
-// Inférence sur NPU
+// Inférence sur CPU (Cortex-M33, via X-CUBE-AI — mapping NODE_SW)
 ai_network_run(network, &ai_input[0], &ai_output[0]);
 
 // Argmax — recherche de la classe dominante
@@ -141,7 +141,7 @@ printf("--> EDGE AI VERDICT : %s (Probabilite: %.1f %%)\r\n",
 
 ![TalkBack](résultat/talkback.png)
 
-*Figure 3 — File d'attente TalkBack avec 454 commandes enregistrées. Toutes les commandes émises entre 16:09 et 16:11 sont `Beau_Temps`, cohérent avec les mesures. La mention "En direct du NPU" confirme que c'est la carte qui pilote le flux.*
+*Figure 3 — File d'attente TalkBack avec 454 commandes enregistrées. Toutes les commandes émises entre 16:09 et 16:11 sont `Beau_Temps`, cohérent avec les mesures. La mention "En direct du NPU" (mention du dashboard web) confirme que c'est la carte qui pilote le flux.*
 
 **Prévisions générées par IA :**
 
@@ -151,7 +151,7 @@ printf("--> EDGE AI VERDICT : %s (Probabilite: %.1f %%)\r\n",
 
 ### 2.d — Mesure de la consommation
 
-La consommation de la carte lors de l'exécution du système complet (capteurs + inférence NPU + envoi réseau) a été mesurée en série avec un multimètre **VICTOR VC9801A** sur le jumper d'alimentation.
+La consommation de la carte lors de l'exécution du système complet (capteurs + inférence CPU + envoi réseau) a été mesurée en série avec un multimètre **VICTOR VC9801A** sur le jumper d'alimentation.
 
 ![Mesure multimètre](résultat/mesure_consommation.jpg)
 
@@ -163,17 +163,17 @@ La consommation de la carte lors de l'exécution du système complet (capteurs +
 | Courant mesuré | **0.166 A** |
 | **Puissance totale** | **1.079 W** |
 
-> Cette mesure inclut l'ensemble du système en fonctionnement : microcontrôleur (NPU actif), shield capteurs (3 capteurs I²C), interface Ethernet (PHY + câble RJ45). Elle représente la consommation du système **complet en production**.
+> Cette mesure inclut l'ensemble du système en fonctionnement : microcontrôleur (CPU Cortex-M33), shield capteurs (3 capteurs I²C), interface Ethernet (PHY + câble RJ45). Elle représente la consommation du système **complet en production**.
 
 ---
 
 ## Comparaison Cloud AI vs Edge AI
 
-| Critère | Cloud AI (MATLAB/ThingSpeak) | Edge AI (STM32N6 NPU) |
+| Critère | Cloud AI (MATLAB/ThingSpeak) | Edge AI (STM32N6 CPU) |
 |---------|-----------------------------|-----------------------|
 | **Lieu d'inférence** | Serveur MathWorks (Cloud) | Carte STM32N6 (local) |
 | **Modèle** | `meteostat_v3.onnx` via MATLAB | `meteostat_v3.onnx` via X-CUBE-AI |
-| **Latence** | Dépend du réseau + serveur | Quasi-instantanée (NPU) |
+| **Latence** | Dépend du réseau + serveur | Quasi-instantanée (CPU local) |
 | **Connectivité requise** | Oui (Internet obligatoire) | Non (fonctionne hors ligne) |
 | **Consommation inférence** | Non mesurable (serveur distant) | Incluse dans 1.079 W |
 | **Taille modèle embarqué** | N/A (côté serveur) | 2 828 octets Flash |
@@ -195,7 +195,7 @@ Un site web a été développé et hébergé sur **GitHub Pages** pour visualise
 - Affichage temps réel de T, H, P et du verdict IA avec confiance
 - Historique graphique sur 10 / 24 / 48 / 100 points
 - Prévisions IA sur 3 jours basées sur la tendance thermique
-- Historique des commandes TalkBack émises par le NPU
+- Historique des commandes TalkBack émises par la carte
 - Mise à jour automatique toutes les 20 secondes
 
 ---
@@ -220,7 +220,7 @@ La consommation mesurée (1.079 W) est celle du **système complet**. À titre d
 
 ## Conclusion
 
-Ce TP a permis de déployer un système d'IA embarquée complet et fonctionnel : de la lecture des capteurs à l'inférence locale sur NPU, en passant par la télémétrie Cloud et la visualisation web en temps réel. Le modèle Meteostat v3 (2.8 Ko, 707 paramètres) s'exécute sur le NPU Neural-ART de la STM32N6 pour une consommation totale de 1.079 W, avec un résultat identique à celui obtenu côté Cloud MATLAB — validant l'ensemble de la chaîne de déploiement.
+Ce TP a permis de déployer un système d'IA embarquée complet et fonctionnel : de la lecture des capteurs à l'inférence locale sur NPU, en passant par la télémétrie Cloud et la visualisation web en temps réel. Le modèle Meteostat v3 (2.8 Ko, 707 paramètres) s'exécute sur le CPU Cortex-M33 de la STM32N6 via X-CUBE-AI pour une consommation totale de 1.079 W, avec un résultat identique à celui obtenu côté Cloud MATLAB — validant l'ensemble de la chaîne de déploiement.
 
 ---
 
