@@ -165,6 +165,16 @@ La consommation de la carte lors de l'exécution du système complet (capteurs +
 | **Puissance totale** | **1.079 W** |
 
 > Cette mesure inclut l'ensemble du système en fonctionnement : microcontrôleur (CPU Cortex-M33), shield capteurs (3 capteurs I²C), interface Ethernet (PHY + câble RJ45). Elle représente la consommation du système **complet en production**.
+>
+> *Figure 6 — Mesure en courant continu : **I = 0.135 A** et **V = 6.5 V** .*
+
+| Grandeur | Valeur |
+|----------|--------|
+| Tension d'alimentation | 6.5 V |
+| Courant mesuré | **0.135 A** |
+| **Puissance totale** | **0.877 W** |
+
+> Cette mesure inclut uniquement la carte en fonctionnement.
 
 ---
 
