@@ -155,7 +155,7 @@ La consommation de la carte lors de l'exécution du système complet (capteurs +
 
 ![Mesure multimètre](résultat/mesure_consommation.jpg)
 
-*Figure 5 — Mesure en courant continu : **I = 0.166 A** sous **V = 6.5 V** (alimentation USB).*
+*Figure 5 — Mesure en courant continu : **I = 0.166 A** et **V = 6.5 V** .*
 
 | Grandeur | Valeur |
 |----------|--------|
