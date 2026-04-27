@@ -19,7 +19,7 @@
 | MATMATI | Faouzi |
 | MANGANELLO | Sophian |
 
-**Formation :** L3 TRI — Télécommunications et Réseaux Informatiques  
+**Formation :** L3 TRI/ESET — Télécommunications et Réseaux Informatiques/Électronique Systèmes Embarqués et Télécommunications 
 **Université :** Savoie Mont Blanc  
 **Module :** ETRS606 — IA Embarquée (Edge AI)  
 **Encadrant :** Pietro M. FERREIRA
