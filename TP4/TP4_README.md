@@ -154,6 +154,7 @@ printf("--> EDGE AI VERDICT : %s (Probabilite: %.1f %%)\r\n",
 La consommation de la carte lors de l'exécution du système complet (capteurs + inférence CPU + envoi réseau) a été mesurée en série avec un multimètre **VICTOR VC9801A** sur le jumper d'alimentation.
 
 ![Mesure multimètre](résultat/mesure_consommation.jpg)
+![Mesure multimètre](résultat/conso_carte_vide.webp)
 
 *Figure 5 — Mesure en courant continu : **I = 0.166 A** et **V = 6.5 V** .*
 
