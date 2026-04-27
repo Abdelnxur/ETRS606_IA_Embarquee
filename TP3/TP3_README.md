@@ -181,7 +181,7 @@ L'objectif est de classer l'état météorologique en **3 classes** à partir de
 
 | Classe | Label | Description |
 |--------|-------|-------------|
-| **1** | `Beau Temps / Nuageux` | Temps stable, pression haute, humidité modérée |
+| **1** | `Beau Temps / Nuageux` | Température stable, pression haute, humidité modérée |
 | **2** | `Pluvieux` | Pression basse, humidité élevée |
 | **3** | `Orageux` | Pression très basse, humidité très élevée, température variable |
 
